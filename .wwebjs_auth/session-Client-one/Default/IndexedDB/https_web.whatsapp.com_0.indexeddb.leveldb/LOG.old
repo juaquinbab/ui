@@ -1,0 +1,9 @@
+2023/10/11-16:09:39.216 6f48 Reusing MANIFEST C:\Users\Alba Fims\Desktop\Cliene1001\.wwebjs_auth\session-Client-one\Default\IndexedDB\https_web.whatsapp.com_0.indexeddb.leveldb/MANIFEST-000001
+2023/10/11-16:09:39.217 6f48 Recovering log #29
+2023/10/11-16:09:39.218 6f48 Reusing old log C:\Users\Alba Fims\Desktop\Cliene1001\.wwebjs_auth\session-Client-one\Default\IndexedDB\https_web.whatsapp.com_0.indexeddb.leveldb/000029.log 
+2023/10/11-16:10:44.469 3e0 Compacting 1@1 + 1@2 files
+2023/10/11-16:10:44.560 3e0 Generated table #34@1: 21542 keys, 1632762 bytes
+2023/10/11-16:10:44.560 3e0 Compacted 1@1 + 1@2 files => 1632762 bytes
+2023/10/11-16:10:44.563 3e0 compacted to: files[ 0 1 1 0 0 0 0 ]
+2023/10/11-16:10:44.563 3e0 Delete type=2 #15
+2023/10/11-16:10:44.563 3e0 Delete type=2 #31

@@ -1,0 +1,19 @@
+2023/10/11-16:12:19.598 2688 Reusing MANIFEST C:\Users\Alba Fims\Desktop\Cliene1001\.wwebjs_auth\session-Client-one\Default\IndexedDB\https_web.whatsapp.com_0.indexeddb.leveldb/MANIFEST-000001
+2023/10/11-16:12:19.599 2688 Recovering log #29
+2023/10/11-16:12:19.681 2688 Reusing old log C:\Users\Alba Fims\Desktop\Cliene1001\.wwebjs_auth\session-Client-one\Default\IndexedDB\https_web.whatsapp.com_0.indexeddb.leveldb/000029.log 
+2023/10/11-16:14:50.804 6e04 Level-0 table #37: started
+2023/10/11-16:14:50.834 6e04 Level-0 table #37: 1154090 bytes OK
+2023/10/11-16:14:50.836 6e04 Delete type=0 #29
+2023/10/11-16:14:51.397 6e04 Compacting 1@0 + 1@1 files
+2023/10/11-16:14:51.466 6e04 Generated table #38@0: 54657 keys, 1836342 bytes
+2023/10/11-16:14:51.466 6e04 Compacted 1@0 + 1@1 files => 1836342 bytes
+2023/10/11-16:14:51.468 6e04 compacted to: files[ 0 1 1 0 0 0 0 ]
+2023/10/11-16:14:51.468 6e04 Delete type=2 #32
+2023/10/11-16:14:51.468 6e04 Delete type=2 #37
+2023/10/11-16:14:54.841 6e04 Compacting 1@1 + 1@2 files
+2023/10/11-16:14:54.889 6e04 Generated table #39@1: 28827 keys, 2189853 bytes
+2023/10/11-16:14:54.919 6e04 Generated table #40@1: 33964 keys, 1139050 bytes
+2023/10/11-16:14:54.919 6e04 Compacted 1@1 + 1@2 files => 3328903 bytes
+2023/10/11-16:14:54.921 6e04 compacted to: files[ 0 0 2 0 0 0 0 ]
+2023/10/11-16:14:54.921 6e04 Delete type=2 #34
+2023/10/11-16:14:54.921 6e04 Delete type=2 #38
