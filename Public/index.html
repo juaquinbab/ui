@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Recibir Datos desde la Web</title>
+  <style>
+   
+   
+   
+   .header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 255, 0.7); /* Fondo azul claro con transparencia */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  z-index: 100; /* Para asegurar que la cabecera esté por encima del contenido */
+}
+
+.header img {
+  width: 150px; /* Ajusta el tamaño del logo según tus necesidades */
+  margin: 0 20px; /* Agrega un margen a la izquierda del logo */
+}
+
+.nav a {
+  color: white;
+  text-decoration: none;
+  margin: 0 20px 0 10px;
+}
+
+body {
+  background-image: url("/Findo-100.jpg");
+  background-size: cover; /* Ajusta el tamaño de la imagen para cubrir todo el fondo */
+  background-repeat: no-repeat; /* Evita que la imagen de fondo se repita */
+}
+
+
+
+#borrar-registros-servidor,
+#resetButton,
+#show-upload-form {
+  margin: 10px; /* Añade un margen para evitar la superposición con la cabecera */
+}
+
+   
+   
+   
+   /* Estilos para la visualización */
+    body {
+      font-family: Arial, sans-serif;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    label {
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    input[type="text"] {
+      width: 300px;
+      padding: 5px;
+      margin-bottom: 10px;
+    }
+
+    button[type="submit"] {
+      padding: 10px 20px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+
+    #mensaje-enviado {
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    #registros-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    #borrar-registros-servidor {
+      padding: 10px 20px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+}
+
+
+#toggleButton {
+            background-color: rgb(38, 221, 1); 
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+
+
+
+.upload-form {
+      display: none;
+    }
+
+    .upload-button {
+      display: inline-block;
+      cursor: pointer;
+      background-color: #0074d9;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+    }
+
+    p {
+      margin: 0;
+      margin-bottom: 5px;
+    }
+  </style>
+</head>
+<body>
+
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<br>
+<br>
+<br>
+
+
+  <button id="borrar-registros-servidor">Borrar registros</button>
+
+  <button id="toggleButton" onclick="toggleMSGenvio()">Enviar IMG</button>
+
+  <button id="show-upload-form" class="upload-button">Cargar Imagen</button>
+
+  <h1>Plataforma de Mensajes</h1>
+
+
+  
+
+  <form action="/procesar" method="post">
+
+    <label for="numbers">Números de Teléfono:</label>
+    <input type="text" name="numbers" id="numbers" placeholder="Ingrese los números de teléfono separados por comas">
+
+    <label for="messages">Mensajes:</label>
+    <input type="text" name="messages" id="messages" placeholder="Ingrese los mensajes separados por comas">
+
+    <button type="submit" id="submitButton">Enviar</button>
+  
+    <div id="mensaje-enviado"></div>
+    <div id="registros-container"></div>
+  </form>
+
+
+ 
+  <!-- este codigo carga la iamgen al servidor con el boton-->
+  
+  <form action="/upload" method="post" enctype="multipart/form-data" class="upload-form">
+    <input type="file" name="image">
+    <input type="submit" value="Cargar Imagen">
+  </form>
+
+  
+
+
+
+  <div class="header">
+
+    <img src="/mig.png">
+
+    <div class="nav">
+      <a href="https://www.creativocode.com/">Quiénes somos</a>
+      
+      <a href="https://wa.link/ljxoq3">Soporte</a>
+
+      
+    </div>
+  </div>
+
+
+
+
+  <script>
+
+document.getElementById('show-upload-form').addEventListener('click', function() {
+      var uploadForm = document.querySelector('.upload-form');
+      if (uploadForm.style.display === 'none' || uploadForm.style.display === '') {
+        uploadForm.style.display = 'block';
+      } else {
+        uploadForm.style.display = 'none';
+      }
+    });
+
+
+// 
+
+function toggleMSGenvio() {
+        fetch('/cambiar', { method: 'POST' })
+        .then(response => response.json())
+        .then(data => {
+            const toggleButton = document.getElementById('toggleButton');
+            toggleButton.style.backgroundColor = data.MSGenvio ? 'green' : 'red';
+            // Guarda el estado en localStorage
+            localStorage.setItem('MSGenvio', data.MSGenvio);
+        })
+        .catch(error => console.error('Error:', error));
+    }
+
+    // Recuperar el estado de MSGenvio al cargar la página
+    document.addEventListener('DOMContentLoaded', function() {
+        const toggleButton = document.getElementById('toggleButton');
+        const storedMSGenvio = localStorage.getItem('MSGenvio');
+        if (storedMSGenvio) {
+            toggleButton.style.backgroundColor = storedMSGenvio === 'true' ? 'green' : 'red';
+        }
+    });
+
+
+
+
+// ////
+
+
+    // Obtener el formulario
+    const form = document.querySelector('form');
+    const mensajeEnviado = document.getElementById('mensaje-enviado');
+    
+    // Al enviar el formulario
+    form.addEventListener('submit', (event) => {
+      event.preventDefault(); // Evitar que se envíe el formulario de inmediato
+
+
+
+      
+const numbersValue = document.getElementById('numbers').value;
+const messagesValue = document.getElementById('messages').value;
+
+// Convertir los valores en arrays separados por comas sin agregar comillas
+const numbersArray = numbersValue.split(',').map(number => number.trim());
+const messagesArray = messagesValue.split(',').map(message => message.trim());
+
+// Enviar los datos al servidor
+fetch('/procesar', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({ numbers: numbersArray, messages: messagesArray })
+})
+
+      .then(response => {
+        if (response.ok) {
+          mensajeEnviado.textContent = 'Mensaje enviado correctamente';
+          mensajeEnviado.style.color = 'green';
+          console.log('Datos enviados correctamente');
+          mostrarRegistros();
+        } else {
+          mensajeEnviado.textContent = 'Error al enviar el mensaje';
+          mensajeEnviado.style.color = 'red';
+          console.error('Error al enviar los datos');
+        }
+      })
+
+      .catch(error => {
+  mensajeEnviado.textContent = 'Error al enviar el mensaje';
+  mensajeEnviado.style.color = 'red';
+  console.error('Error:', error);
+});
+});
+
+// Función para mostrar los registros de mensajes
+function mostrarRegistros() {
+  fetch('/registros')
+    .then(response => response.json())
+    .then(data => {
+      const registrosContainer = document.getElementById('registros-container');
+      registrosContainer.innerHTML = ''; // Limpiar el contenido anterior
+
+      data.forEach(registro => {
+        const mensajeElement = document.createElement('p');
+        mensajeElement.textContent = registro.mensaje;
+        registrosContainer.appendChild(mensajeElement);
+
+        const numeroElement = document.createElement('p');
+        numeroElement.textContent = registro.numero;
+        registrosContainer.appendChild(numeroElement);
+      });
+    })
+    .catch(error => {
+      console.log('Error al obtener los registros:', error);
+    });
+}
+
+
+
+
+// Obtén una referencia al botón por su ID
+const btnBorrarRegistros = document.getElementById('borrar-registros-servidor');
+
+// Agrega un manejador de eventos para el clic en el botón
+btnBorrarRegistros.addEventListener('click', () => {
+  // Cambia el color del botón a rojo
+  btnBorrarRegistros.style.backgroundColor = 'red';
+
+  // Realiza la solicitud DELETE al servidor
+  fetch('/borrar-registros', {
+    method: 'DELETE',
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      // Maneja la respuesta del servidor
+      console.log(data.message); // Muestra el mensaje en la consola
+    })
+    .catch((error) => {
+      console.error('Error al borrar registros:', error);
+    });
+
+  // Después de 2 segundos, regresa el color del botón a verde
+  setTimeout(() => {
+    btnBorrarRegistros.style.backgroundColor = 'green';
+  }, 2000);
+});
+
+
+
+
+
+
+
+setInterval(mostrarRegistros, 5000);
+
+
+
+// Llamar a la función para mostrar los registros al cargar la página
+mostrarRegistros();
+</script>
+</body>
+</html>

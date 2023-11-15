@@ -1,3 +1,2 @@
-2023/10/11-16:09:38.690 3654 Reusing MANIFEST C:\Users\Alba Fims\Desktop\Cliene1001\.wwebjs_auth\session-Client-one\Default\Session Storage/MANIFEST-000001
-2023/10/11-16:09:38.691 3654 Recovering log #3
-2023/10/11-16:09:38.691 3654 Reusing old log C:\Users\Alba Fims\Desktop\Cliene1001\.wwebjs_auth\session-Client-one\Default\Session Storage/000003.log 
+2023/11/14-21:03:12.857 9d8 Creating DB C:\Users\Alba Fims\Desktop\Cliene1001\.wwebjs_auth\session-Client-one\Default\Session Storage since it was missing.
+2023/11/14-21:03:12.872 9d8 Reusing MANIFEST C:\Users\Alba Fims\Desktop\Cliene1001\.wwebjs_auth\session-Client-one\Default\Session Storage/MANIFEST-000001

@@ -1,3 +1,2 @@
-2023/10/11-16:09:38.491 3654 Reusing MANIFEST C:\Users\Alba Fims\Desktop\Cliene1001\.wwebjs_auth\session-Client-one\Default\Service Worker\Database/MANIFEST-000001
-2023/10/11-16:09:38.492 3654 Recovering log #3
-2023/10/11-16:09:38.492 3654 Reusing old log C:\Users\Alba Fims\Desktop\Cliene1001\.wwebjs_auth\session-Client-one\Default\Service Worker\Database/000003.log 
+2023/11/14-21:03:14.617 2330 Creating DB C:\Users\Alba Fims\Desktop\Cliene1001\.wwebjs_auth\session-Client-one\Default\Service Worker\Database since it was missing.
+2023/11/14-21:03:14.631 2330 Reusing MANIFEST C:\Users\Alba Fims\Desktop\Cliene1001\.wwebjs_auth\session-Client-one\Default\Service Worker\Database/MANIFEST-000001
