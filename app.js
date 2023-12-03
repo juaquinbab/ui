@@ -76,7 +76,7 @@ client.on('message', async (message) => {
 
 // Este codigo verifica que ya se envio el mensaje de bienvenida
 if (!registro[message.from]) { 
-  client.sendMessage(message.from, 'Hola soy Marco Polo, tu asistente virtual cheque regalo \n \n Marque el número de la opción que necesita. \n \n 1️⃣ Eres afiliado \n \n 2️⃣ Deseas afiliarte');
+  client.sendMessage(message.from, 'Hola soy Marco Polo, tu asistente virtual cheque regalo \n \n Marque el número de la opción que necesita. \n \n 1️⃣ Eres afiliado \n \n 2️⃣ Deseas afiliarte \n \n 3️⃣Activar plan');
 
   registro[message.from] = { etapa: 0, numeroDocumento: '' };
   // registro[message.from] = true; // Register the phone number
@@ -111,7 +111,10 @@ switch (registro[message.from].etapa) {
     } else if (mensajeEnMinusculas.includes('2')) {
       client.sendMessage(message.from, 'Por favor diligencia la información siguiente en este mismo cuerpo del mensaje: nombre de la empresa donde te vinculas. Tu nombre completo, Numero documento, Número celular, Correo electrónico, Edad, Estado civil, Ciudad de residencia. Manifiesto haber leído y aceptado las condiciones de uso impresas en la revista.');
       registro[message.from].etapa = 12;
-    }
+  } else if (mensajeEnMinusculas.includes('3')) {
+    client.sendMessage(message.from, 'Indicanos tu código de afiliación. Recuerda son 6 caracteres alfanumericosindícame el código que vas a activar seguido en el mismo cuerpo del mensaje tu nombre, tu número de contacto, tu correo electrónico, edad y estado civil , y la respuesta sigue siendo la misma que dimos para esta opción');
+    registro[message.from].etapa = 22;
+  }
     break;
 
 
@@ -120,7 +123,7 @@ switch (registro[message.from].etapa) {
     case 10:
       if (message.body.length > 2) {
         // Si el mensaje contiene "No" o "Cancelar", envía la respuesta
-        client.sendMessage(message.from, 'Marque el número de la opción que necesita. \n \n 1️⃣ Ayuda para reservar un plan. \n \n 2️⃣ Solicitar un plan personalizado. \n \n 3️⃣ Realizar un reclamo');
+        client.sendMessage(message.from, 'Marque el número de la opción que necesita. \n \n 1️⃣ Ayuda para reservar un plan. \n \n 2️⃣ Solicitar un plan personalizado. \n \n 3️⃣ Realizar un reclamo\n \n4️⃣ Disfruta de un plan en tu ciudad \n \n 5️⃣ Disfruta de un pasadia ');
         registro[message.from].etapa = 11;
       }
       break
@@ -135,8 +138,14 @@ switch (registro[message.from].etapa) {
           client.sendMessage(message.from, 'Indicanos el lugar donde deseas reservar, fechas de ingresa y salida, número de personas');
           registro[message.from].etapa = 13;
         } else if (message.body === '3') {
-          client.sendMessage(message.from, 'Describenos el motivo de tu reclamo');
-          registro[message.from].etapa = 14;
+          client.sendMessage(message.from, 'Indícanos el nombre del plan que deseas disfrutar, la fecha y el numero de personas. ');
+          registro[message.from].etapa = 21;
+        } else if (message.body === '4') {
+          client.sendMessage(message.from, 'Indícanos el nombre del plan que deseas disfrutar, la fecha y el numero de personas. ');
+          registro[message.from].etapa = 21;
+        } else if (message.body === '5') {
+          client.sendMessage(message.from, 'Indícanos el nombre del plan que deseas disfrutar, la fecha y el numero de personas. ');
+          registro[message.from].etapa = 21;
         }
         break;
   
@@ -169,6 +178,25 @@ switch (registro[message.from].etapa) {
               }
               break;
 
+
+              case 21:
+                if (message.body.length > 2) {
+                  // Verificar si el mensaje tiene más de 2 letras
+                  client.sendMessage(message.from, 'Tu solicitud ha sido recibida, te contactaremos lo más pronto posible');
+                  registro[message.from].etapa = 20;
+                  delete registro[message.from];
+                }
+                break;
+
+
+                case 22:
+                  if (message.body.length > 2) {
+                    // Verificar si el mensaje tiene más de 2 letras
+                    client.sendMessage(message.from, 'Cordial bienvenida tu código ha sido activado y puedes disfrutar los privilegios desde ya.');
+                    registro[message.from].etapa = 20;
+                    delete registro[message.from];
+                  }
+                  break;
 
 
   }
