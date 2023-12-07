@@ -112,7 +112,7 @@ switch (registro[message.from].etapa) {
       client.sendMessage(message.from, 'Por favor diligencia la información siguiente en este mismo cuerpo del mensaje: nombre de la empresa donde te vinculas. Tu nombre completo, Numero documento, Número celular, Correo electrónico, Edad, Estado civil, Ciudad de residencia. Manifiesto haber leído y aceptado las condiciones de uso impresas en la revista.');
       registro[message.from].etapa = 12;
   } else if (mensajeEnMinusculas.includes('3')) {
-    client.sendMessage(message.from, 'Indicanos tu código de afiliación. Recuerda son 6 caracteres alfanumericosindícame el código que vas a activar seguido en el mismo cuerpo del mensaje tu nombre, tu número de contacto, tu correo electrónico, edad y estado civil , y la respuesta sigue siendo la misma que dimos para esta opción');
+    client.sendMessage(message.from, 'Indicanos tu código de afiliación. Recuerda son 6 caracteres alfanumericosindícame el código que vas a activar seguido en el mismo cuerpo del mensaje tu nombre, tu número de contacto, tu correo electrónico, edad y estado civil.');
     registro[message.from].etapa = 22;
   }
     break;
